@@ -1,6 +1,14 @@
-﻿namespace Project1.Models
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace Project1.Models
 {
-    public class ProductContext
+    public class ProductContext:DbContext
     {
+        public ProductContext(DbContextOptions<ProductContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<Product> MoviesList { get; set; } = null!;
     }
 }
