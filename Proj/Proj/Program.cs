@@ -1,27 +1,22 @@
+using Microsoft.EntityFrameworkCore;
+using Proj.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllersWithViews();
-
-var app = builder.Build();
+builder.Services.AddControllers();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+builder.Services.AddDbContext<ProductContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Connstr")));
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-
-app.MapFallbackToFile("index.html"); ;
+var app = builder.Build();
+app.UseCors("corsapp");
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();
