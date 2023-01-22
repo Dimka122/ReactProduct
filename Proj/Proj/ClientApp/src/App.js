@@ -4,11 +4,13 @@
 //import { Layout } from './components/Layout';
 import './custom.css';
 import Layout from './components/shared/Layout';
+import AllSuperVillain from './pages/AllSuperVillain';
 
 function App() {
   return (
     <Layout>
       <h1>Привет Димон</h1>
+      <AllSuperVillain></AllSuperVillain>
     </Layout>
   );
 }
