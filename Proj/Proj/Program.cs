@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Proj.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,14 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Configure the HTTP request pipeline.
-builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+builder.Services.AddCors(options =>
 {
-    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-}));
+    options.AddPolicy(name: "ReactJSDomain",
+        policy => policy.WithOrigins("http://localhost:44454")
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+});
 builder.Services.AddDbContext<ProductContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Connstr")));
 
 var app = builder.Build();
-app.UseCors("corsapp");
+app.UseCors("ReactJSDomain");
 app.UseAuthorization();
 app.MapControllers();
 

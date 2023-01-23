@@ -21,5 +21,12 @@ namespace Proj.Controllers
             var villains = await _productContext.SuperVillain.ToListAsync();
             return Ok(villains);
         }
+        [HttpPost]
+        public async Task<IActionResult> Post(SuperVillain newSuperVillain)
+        {
+            _productContext.SuperVillain.Add(newSuperVillain);
+            await _productContext.SaveChangesAsync();
+            return Ok(newSuperVillain);
+        }
     }
 }

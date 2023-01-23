@@ -8,8 +8,6 @@ namespace Proj.Models
             {
 
             }
-
-            //public DbSet<Product> ProductList { get; set; } = null!;
         public DbSet<SuperVillain> SuperVillain { get; set; }
     }
 }
