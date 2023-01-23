@@ -8,6 +8,6 @@ namespace Proj.Models
             {
 
             }
-        public DbSet<SuperVillain> SuperVillain { get; set; }
+        public DbSet<SuperVillain> SuperVillain { get; set; }=null;
     }
 }

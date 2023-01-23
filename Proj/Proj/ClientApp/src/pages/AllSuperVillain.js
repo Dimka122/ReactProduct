@@ -1,14 +1,16 @@
-import { Row } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Row } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+
  
 function AllSuperVillain() {
-    const navigate = useNavigate();
   const [superVillains, setSuperVillains] = useState([]);
+  const navigate = useNavigate();
+  
  
   useEffect(() => {
     axios.get("https://localhost:7273/SuperVillain").then((response) => {
@@ -17,10 +19,11 @@ function AllSuperVillain() {
       });
     });
   }, []);
- 
+  
   return (
     <>
-    <Row className="mt-2">
+      
+      <Row className="mt-2">
         <Col md={{ span: 4, offset: 4 }}>
           <Button
             variant="primary"
@@ -52,6 +55,7 @@ function AllSuperVillain() {
                   >
                     Edit
                   </Button>
+                
                 </Card.Body>
               </Card>
             </Col>

@@ -6,7 +6,9 @@ import './custom.css';
 import Layout from './components/shared/Layout';
 import AllSuperVillain from './pages/AllSuperVillain';
 import AddSuperVillain from './pages/AddSuperVillain';
-import UpdateSuperVillain from "./pages/UpdateSuperVillain";
+import UpdateSuperVillain from './pages/UpdateSuperVillain';
+
+
 
 function App() {
   return (
@@ -26,20 +28,3 @@ function App() {
 }
 export default App;
 
-//export default class App extends Component {
- // static displayName = App.name;
-//  render() {
-//    return (
- //     <Layout>
-//        
- //      <Routes>
-//          {AppRoutes.map((route, index) => {
- //           const { element, ...rest } = route;
- //           return <Route key={index} {...rest} element={element} />;
- //           
-//          })}         
-//        </Routes>
-//        </Layout>
-//    );
-//  }
-//}
